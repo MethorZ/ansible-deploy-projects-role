@@ -1,0 +1,12 @@
+---
+# Enable git deployment
+deploy_git: true
+
+deploy_projects: []
+#  Example of git deployment
+#  - git:
+#      - repository: ssh://......git
+#        branch: master
+#        remote_user: user
+#        deploy_dir: /path/to/clone/directory
+#        composer_install: true

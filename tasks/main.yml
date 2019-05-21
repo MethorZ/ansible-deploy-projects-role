@@ -1,0 +1,11 @@
+---
+##
+# Project deployment
+##
+- name: INCLUDE_TASKS | Deploy git projects
+  include_tasks: deploy_git_projects.yml
+#  with_items: "{{ deploy_projects }}"
+  with_subelements:
+    - "{{ deploy_projects }}"
+    - git
+  when: deploy_git

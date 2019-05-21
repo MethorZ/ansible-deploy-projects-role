@@ -1,0 +1,23 @@
+---
+##
+# Git project deployment
+##
+- name: GIT | Deploy projects
+  git:
+    accept_hostkey: true
+    repo: "{{ item.1.repository }}"
+    dest: "{{ item.1.deploy_dir }}"
+    version: "{{ item.1.branch }}"
+  remote_user: "{{ item.1.remote_user }}"
+  become_user: "{{ item.1.remote_user }}"
+  become_flags: '-E'
+
+- name: COMPOSER | Composer install executions
+  composer:
+    command: install
+    working_dir: "{{ item.1.deploy_dir }}"
+    no_scripts: yes
+  remote_user: "{{ item.1.remote_user }}"
+  become_user: "{{ item.1.remote_user }}"
+  become_flags: '-E'
+  when: item.1.composer_install
