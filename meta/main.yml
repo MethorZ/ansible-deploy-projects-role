@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: deploy-projects
   author: MethorZ
   description: Ansible deploy projects via git (incl. composer install)
   company: MethorZ
