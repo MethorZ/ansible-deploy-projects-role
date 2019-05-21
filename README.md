@@ -42,7 +42,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: methorz.ansible-deploy-projects-role}
+         - { role: methorz.deploy_projects}
 
 License
 -------
