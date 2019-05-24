@@ -1,6 +1,6 @@
 ---
 # Enable git deployment
-deploy_git: true
+deploy_git_enabled: false
 
 deploy_projects: []
 #  Example of git deployment

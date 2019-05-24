@@ -18,7 +18,7 @@ Role Variables
 --------------
 ```YAML
 # Enable git deployment
-deploy_git: true
+deploy_git_enabled: true
 
 #Exmaple git deployment
 deploy_projects:

@@ -8,4 +8,4 @@
   with_subelements:
     - "{{ deploy_projects }}"
     - git
-  when: deploy_git
+  when: deploy_git_enabled
