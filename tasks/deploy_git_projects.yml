@@ -7,6 +7,11 @@
     path: "{{ item.1.deploy_dir }}"
   register: deploy_git_directory_stat
 
+- name: STAT | Stat symlink project directory
+  stat:
+    path: "{{ item.1.symlink_dir }}"
+  register: symlink_directory_stat
+
 - name: GIT | Deploy projects
   git:
     accept_hostkey: true
@@ -17,7 +22,7 @@
   become: yes
   become_user: "{{ item.1.remote_user }}"
   become_flags: '-E'
-  when: not deploy_git_directory_stat.stat.exists
+  when: not deploy_git_directory_stat.stat.exists and not symlink_directory_stat.stat.exists
 
 - name: COMPOSER | Composer install executions
   composer:
@@ -28,7 +33,7 @@
   become: yes
   become_user: "{{ item.1.remote_user }}"
   become_flags: '-E'
-  when: item.1.composer_install and not deploy_git_directory_stat.stat.exists
+  when: item.1.composer_install and not deploy_git_directory_stat.stat.exists and not symlink_directory_stat.stat.exists
 
 - name: FILE | Symlink projects
   file:
@@ -39,4 +44,4 @@
   become: yes
   become_user: "{{ item.1.remote_user }}"
   become_flags: '-E'
-  when: deploy_git_directory_stat.stat.exists
+  when: not deploy_git_directory_stat.stat.exists and not symlink_directory_stat.stat.exists
