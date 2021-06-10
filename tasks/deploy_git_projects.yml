@@ -44,4 +44,4 @@
   become: yes
   become_user: "{{ item.1.remote_user }}"
   become_flags: '-E'
-  when: not deploy_git_directory_stat.stat.exists and not symlink_directory_stat.stat.exists
+  when: deploy_git_directory_stat.stat.exists and not symlink_directory_stat.stat.exists
